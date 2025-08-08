@@ -37,7 +37,27 @@ This file contains a list of SQL practice tasks covering CRUD operations, ALTER 
 - Change salary column data type from DECIMAL to INTEGER.
 - Make f_name column NOT NULL.
 - Drop the UNIQUE constraint from the email column.
+---
+## WHERE, LIKE, ORDER BY, DISTINCT, LIMIT
+1.Get all employees with salary > 50000.
+2.Get all employees hired after '2024-01-01'.
+3.Get employees whose first_name starts with 'A'.
+4.Get employees whose email contains 'gmail'.
+5.Find distinct department IDs from the employee table.
+6.Get the top 3 highest-paid employees.
+7.Show employees ordered by hire_date in descending order.
+8.Show employees not in department 2.
+9.Get employees whose last_name ends with 'son'.
 
+📊 Aggregation (SUM, COUNT, AVG, MAX, MIN)
+10.Count the total number of employees.
+11.Count how many employees are in each department.
+12.Get the average salary of all employees.
+13.Get the maximum and minimum salary from the table.
+14.Show the total salary per department.
+15.Count the number of employees hired in 2025.
+16.Show the department with the highest total salary (ORDER BY + LIMIT 1).
+17.Show departments having more than 3 employees (HAVING).
 ---
 # SQL String Functions & Queries – Practice Set
 
