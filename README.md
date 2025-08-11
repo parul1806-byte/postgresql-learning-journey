@@ -94,5 +94,34 @@ This file contains 30 SQL practice questions covering string functions such as C
 
 ---
 
+# PostgreSQL Table Alteration Questions
+
+This repository contains a set of PostgreSQL `ALTER TABLE` practice questions.
+
+---
+
+1. Change the data type of the `age` column from INTEGER to SMALLINT.  
+2. Rename the column `fullname` to `full_name`.  
+3. Add a new column `email_verified` of type BOOLEAN with a default value FALSE.  
+4. Drop the column `phone_number`.  
+5. Rename the table `alter_table` to `employee_details`.  
+6. Add a NOT NULL constraint to the `address` column.  
+7. Drop the NOT NULL constraint from the `address` column (if added).  
+8. Set the default value of the `status` column to 'pending' instead of 'active'.  
+9. Remove the default value of the `status` column.  
+10. Change the owner of the table `alter_table` to a user named `hr_manager`.  
+11. Add a unique constraint to the `email` column.  
+12. Drop the unique constraint from the `username` column.  
+13. Add a check constraint to the `salary` column so that salary must be greater than 0.  
+14. Drop the check constraint from the `salary` column.  
+15. Change the data type of the `birthdate` column from DATE to TIMESTAMP.  
+16. Add a foreign key constraint on a new column `manager_id` referencing `alter_table_id` within the same table.  
+17. _(Intentionally left blank if skipped in sequence)_  
+18. Modify the `last_modified` column so that it automatically updates to the current timestamp on every row update.  
+19. Change the `description` column to allow NULL values if it does not already.  
+20. Add a column `created_at` of type TIMESTAMP with default value as the current timestamp.  
+
+---
+
 💡 **Tip:** Try using combinations of these functions in a single query for advanced practice.
 
