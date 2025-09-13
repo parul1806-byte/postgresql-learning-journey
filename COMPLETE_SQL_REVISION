@@ -110,3 +110,52 @@ where salary BETWEEN 30000 and 60000;
 10-- Show employees who have NULL in manager_id
 SELECT first_name, last_name from employees
 WHERE  manager_id IS NOT NULL;
+
+
+11--Section 2: Aggregates (COUNT, SUM, AVG, MIN, MAX, GROUP BY, HAVING)
+
+12--Find the total number of employees.
+SELECT COUNT( first_name ) FROM employees;
+
+13--Calculate the average salary of employees.
+SELECT AVG(salary) FROM employees;
+
+14--Find the maximum and minimum salary in the company.
+SELECT MAX(salary) FROM employees;
+
+15--Count how many employees belong to each department.
+SELECT MIN(salary) FROM employees;
+
+16--Display the total salary paid to each department.
+SELECT SUM(salary) FROM employees;
+
+17--Show the departments having more than 5 employees.
+SELECT dept_id, count(*) as total_employees FROM employees
+group by dept_id
+HAVING COUNT(*)>5
+ORDER BY total_employees;
+
+18--Find the average salary of employees in each job role.
+SELECT  dept_id , AVG(salary) FROM employees
+GROUP BY dept_id
+;
+
+19--Display the department with the highest average salary.
+SELECT dept_id, AVG(salary) AS Avg_salary FROM employees
+group by dept_id
+ORDER BY Avg_salary DESC
+LIMIT 1
+;
+
+20--Show the number of employees hired each year.
+SELECT  DATE_PART( 'year',hire_date) AS hired_date,
+count(*) as no_of_employee
+FROM employees
+GROUP BY  hire_date
+order by hire_date;
+
+21--Find the department which has the maximum number of employees
+select dept_id,count(first_name) as employee_count from employees
+group by dept_id
+order by  employee_count  asc
+limit 1;
