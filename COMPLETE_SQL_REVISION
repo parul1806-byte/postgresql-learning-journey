@@ -1,3 +1,4 @@
+
 CREATE TABLE departments (
     dept_id INT PRIMARY KEY,
     dept_name VARCHAR(50)
@@ -159,3 +160,64 @@ select dept_id,count(first_name) as employee_count from employees
 group by dept_id
 order by  employee_count  asc
 limit 1;
+
+22--Display employee names with their department names.
+select first_name,dept_name from employees as e
+join departments as d 
+on e.dept_id = d.dept_id;
+
+23--Show all employees along with their department, even if no department is assigned.
+select first_name,dept_name from employees as e
+left join departments as d 
+on e.dept_id = d.dept_id;
+
+24--Show departments with no employees.
+select count(first_name) as no_of_employee,dept_name
+from employees as e 
+join departments as d 
+on e.dept_id = d.dept_id
+group by dept_name;
+
+25--Retrieve employees with their manager’s name.
+
+
+26--List employees working in the Finance department.
+select first_name,dept_name from employees as e
+join departments as d 
+on e.dept_id = d.dept_id
+where dept_name = 'Finance';
+
+27--Find employees who earn more than the average salary of their department.
+select dept_name, first_name from employees as e
+join departments as d 
+on e.dept_id = d.dept_id
+where salary > (select avg(e2.salary)
+from employees as e2 
+where e2.dept_id = e.dept_id);
+
+28--Display employees who work in the same department as 'John'.
+select e.first_name from employees as e
+where e.dept_id = (select e2.dept_id from employees e2 
+where e2.first_name = 'John');
+
+
+29--Show all employee-department combinations (CROSS JOIN).
+select dept_name, first_name from employees as e
+cross join departments as d ;
+
+30--Find employees whose department name starts with S.
+select first_name,dept_name from employees as e
+join departments as d 
+on e.dept_id = d.dept_id
+where dept_name like 'S%';
+
+31--Show the second-highest salary employee in each department.
+SELECT dept_name ,first_name ,salary  from departments as d
+join employees as e 
+on d.dept_id = e.dept_id
+where salary = (select max(e2.salary) from employees as e2
+where e2.dept_id = e.dept_id and 
+e2.salary < (select max(e3.salary) from employees as e3
+where e3.dept_id = e.dept_id)
+);
+
