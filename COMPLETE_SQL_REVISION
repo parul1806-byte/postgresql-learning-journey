@@ -221,3 +221,52 @@ e2.salary < (select max(e3.salary) from employees as e3
 where e3.dept_id = e.dept_id)
 );
 
+--Find employees whose salary is greater than the company’s average salary.
+SELECT first_name from employees e
+where e.salary >(select avg(e2.salary) from employees e2);
+
+--Find the employee(s) with the maximum salary.
+SELECT first_name from employees e
+where e.salary >(select max(e2.salary) from employees e2);
+
+--Display employees who earn more than their manager.
+SELECT e.first_name from employees e
+where e.salary > (
+select e2.salary from employees e2 
+where e.manager_id = e2.emp_id
+);
+
+--Retrieve employees who work in the same department as the employee with emp_id = 101.
+select e.first_name from employees e
+where e.dept_id = (select e2.dept_id from employees e2 where e2.emp_id = 101 );
+
+--Show employees who earn less than the minimum salary of IT department.
+select e.first_name from employees e
+where e.salary < (select min(e2.salary)from employees e2 where dept_id = 2);
+
+--Display the department name of the highest-paid employee.
+select dept_name from departments d
+join employees e 
+on d.dept_id = e.dept_id
+where e.salary = (select max(e2.salary) from employees e2
+);
+
+--Find employees who joined before the earliest hire date in the company.
+select first_name from employees 
+where hire_date <(select min(hire_date) from employees);
+
+--Show employees whose salary matches the second-highest salary.
+select first_name from employees
+where salary = (select max(e2.salary)from employees e2 
+where e2.salary < (select max(e3.salary)from employees e3));
+
+--Find employees whose salary is above department average using a correlated subquery.
+select e.first_name from employees e
+where e.salary >(select avg(e2.salary) from employees e2
+where e2.dept_id = e.dept_id)
+;
+
+--List employees who are not managers.
+select e.first_name from employees e  where
+e.emp_id  not in (select e2.manager_id from employees e2 
+where  e2.manager_id is not null);
